@@ -1,6 +1,7 @@
 # AWAP 2024 Game Engine
 
-This is the AWAP 2024 game engine.
+## Installation
+`pip install compress_json pygame`
 
 ## Running Game Engine
 
@@ -26,4 +27,5 @@ OR
 
 ### Example commands:
 `python run_game.py -b bots/random_bot.py -r bots/nothing_bot.py -m maps/spiral.awap24m --render`
+
 `python run_game.py -c config.json --render`
