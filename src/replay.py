@@ -3,6 +3,7 @@ import compress_json
 from src.game_constants import Team, TowerType
 from src.game_state import GameState
 from src.map import Map
+from typing import List
 
 @dataclass
 class ReplayTower:
@@ -33,14 +34,14 @@ class ReplayTurn:
     red_health: int
     blue_time_remaining: float
     red_time_remaining: float
-    blue_towers: list[dict]
-    red_towers: list[dict]
-    blue_debris: list[dict]
-    red_debris: list[dict]
-    blue_snipes: list[tuple] # ((x0, y0), (x1, y1))
-    red_snipes: list[tuple]
-    blue_bombs: list[tuple] # (x, y)
-    red_bombs: list[tuple]
+    blue_towers: List[dict]
+    red_towers: List[dict]
+    blue_debris: List[dict]
+    red_debris: List[dict]
+    blue_snipes: List[tuple] # ((x0, y0), (x1, y1))
+    red_snipes: List[tuple]
+    blue_bombs: List[tuple] # (x, y)
+    red_bombs: List[tuple]
 
 @dataclass
 class ReplayMetadata:
@@ -48,11 +49,11 @@ class ReplayMetadata:
     map_name: str
     map_width: int
     map_height: int
-    map_path: list[tuple[int, int]]
+    map_path: List[tuple]
     red_bot: str
     blue_bot: str
     winner: str
-    scores: list[float]
+    scores: List[float]
 
 class Replay:
     def __init__(
