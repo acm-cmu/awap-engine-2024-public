@@ -29,3 +29,9 @@ OR
 `python run_game.py -b bots/random_bot.py -r bots/nothing_bot.py -m maps/spiral.awap24m --render`
 
 `python run_game.py -c config.json --render`
+
+## Watching from a replay file
+
+To watch a replay, run the following command:
+
+`python replay_game.py replayFile`
