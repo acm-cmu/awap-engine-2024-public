@@ -26,10 +26,10 @@ class RobotController:
         return copy.deepcopy(self.__gs.map)
     
     def get_towers(self, team: Team) -> List[Tower]:
-        return list(copy.deepcopy(self.__gs.towers[team]).values())
+        return copy.deepcopy(list(self.__gs.towers[team]).values())
     
     def get_debris(self, team: Team) -> List[Debris]:
-        return list(copy.deepcopy(self.__gs.debris[team].values()))
+        return copy.deepcopy(list(self.__gs.debris[team].values()))
 
     def sense_debris_within_radius_squared(self, team: Team, x: int, y: int, r2: int) -> List[Debris]:
         inRange: List[Debris] = []
