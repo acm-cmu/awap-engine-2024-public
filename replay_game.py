@@ -26,6 +26,9 @@ elif REPLAY_FILE_PATH.endswith('.awap24r'):
 else:
     print("Please provide a valid replay file.")
 
+print("Winner", replay['metadata']['winner'])
+print("Blue bot", replay['metadata']['blue_bot'])
+print("Red bot", replay['metadata']['red_bot'])
 map_name = replay['metadata']['map_name']
 map_path = f"maps/{map_name}.awap24m"
 map = Map(map_path)
@@ -69,7 +72,7 @@ def get_debris(team, json_debris):
     return res
 
 def set_turn(turn):
-    gs.round_number = turn['turn_number']
+    gs.turn = turn['turn_number']
     gs.balance[Team.BLUE] = turn['blue_balance']
     gs.balance[Team.RED] = turn['red_balance']
     gs.health[Team.BLUE] = turn['blue_health']
