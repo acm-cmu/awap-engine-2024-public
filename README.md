@@ -34,4 +34,10 @@ OR
 
 To watch a replay, run the following command:
 
-`python replay_game.py replayFile`
+`python replay_game.py <filename>.awap24r.gz`
+
+Note, this only works when running locally - outside of a Codespace or browser due to limitations with PyGame.
+
+To use the CLI on a remote or local device, run:
+
+`python replay_game_cli.py <filename>.awap24r`
