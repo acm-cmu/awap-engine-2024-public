@@ -1,0 +1,17 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/typescript-node",
+    "forwardPorts": [
+        3000
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/desktop-lite:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python", 
+                "ms-python.black-formatter"
+            ]
+        }
+    }
+}

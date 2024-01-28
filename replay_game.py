@@ -6,9 +6,16 @@ from src.map import Map
 from src.game_constants import Team, TowerType
 from src.tower import Tower
 from src.debris import Debris
+import os
+os.environ["SDL_VIDEODRIVER"] = "dummy"
 
+
+# python replay_game.py <mapname>.awap24r [--web]
+WEB_MODE = False
 if len(sys.argv) > 1:
     REPLAY_FILE_PATH = sys.argv[1]
+    if '--web' in sys.argv:
+        WEB_MODE = True
 else:
     print("Please provide the replay file path as a command line argument.")
     print("Example: python replay_game.py <mapname>.awap24r")
@@ -22,14 +29,11 @@ elif REPLAY_FILE_PATH.endswith('.awap24r'):
 else:
     print("Please provide a valid replay file.")
 
-replay = compress_json.load(REPLAY_FILE_PATH)
-
 map_name = replay['metadata']['map_name']
 map_path = f"maps/{map_name}.awap24m"
 map = Map(map_path)
-
 gs = GameState(map)
-
+    
 def get_tower(team, json_tower):
     id = json_tower['id']
     json_typ = json_tower['type']
@@ -101,4 +105,12 @@ def set_turn(turn):
 
 for turn in replay['turns']:
     set_turn(turn)
-    gs.render()
+    if WEB_MODE:
+        pass
+    
+        
+    try:
+        gs.render()
+    except:
+        print("PyGame may not be compatible with your system. Try running the replay with the --web flag.")
+        exit()
