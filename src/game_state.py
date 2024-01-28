@@ -90,7 +90,7 @@ class GameState:
             self.has_rendered = True
             pygame.init()
             pygame.display.set_caption("GameState visualizer")
-            self.tile_size = 10
+            self.tile_size = 20
             self.screen = pygame.display.set_mode((self.map.width*2 * self.tile_size, self.map.height * self.tile_size))
         
         # For performance
@@ -130,7 +130,20 @@ class GameState:
                 color = (0, 0, 255) if team == Team.BLUE else (255, 0, 0)
                 ((left, top), (width, height)) = get_screen_coords(team, tower.x, tower.y)
                 center = (left + width/2, top + height/2)
-                pygame.draw.circle(self.screen, color, center, 3)
+
+                if tower.type == TowerType.SOLAR_FARM:
+                    innercolor = (255, 255, 0)
+                elif tower.type == TowerType.BOMBER:
+                    innercolor = (0, 0, 0)
+                elif tower.type == TowerType.GUNSHIP:
+                    innercolor = (0, 204, 204)
+                elif tower.type == TowerType.REINFORCER:
+                    innercolor = (0, 204, 0)
+                else:
+                    innercolor = (255, 51, 153)
+
+                pygame.draw.circle(self.screen, color, center, 6)
+                pygame.draw.circle(self.screen, innercolor, center, 4)
                 
         
         # Draw debris as text indicating number of debris on that tile
