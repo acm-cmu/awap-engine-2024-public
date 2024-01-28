@@ -47,7 +47,7 @@ class RobotController:
 
     def sense_towers_within_radius_squared(self, team: Team, x: int, y: int, r2: int) -> List[Tower]:
         inRange: List[Tower] = []
-        for tower in self.__gs.towers[team]:
+        for tower in self.__gs.towers[team].values():
             if (tower.x - x)**2 + (tower.y - y)**2 <= r2:
                 inRange.append(copy.deepcopy(tower))
 
