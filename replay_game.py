@@ -6,9 +6,6 @@ from src.map import Map
 from src.game_constants import Team, TowerType
 from src.tower import Tower
 from src.debris import Debris
-import os
-os.environ["SDL_VIDEODRIVER"] = "dummy"
-
 
 # python replay_game.py <mapname>.awap24r [--web]
 WEB_MODE = False
@@ -107,7 +104,6 @@ for turn in replay['turns']:
     set_turn(turn)
     if WEB_MODE:
         pass
-    
         
     try:
         gs.render()
