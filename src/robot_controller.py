@@ -83,7 +83,7 @@ class RobotController:
             res = max(v2, v3)
         else:
             res = max(v3, v4)
-        return max(res, 50)
+        return max(res, 200)
     
     def can_send_debris(self, cooldown: int, health: int) -> bool:
         if self.__gs.sent_debris[self.__team] is not None:
