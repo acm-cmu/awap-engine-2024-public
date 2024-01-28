@@ -1,4 +1,5 @@
 import sys
+import json
 import compress_json
 from src.game_state import GameState
 from src.map import Map
@@ -10,8 +11,16 @@ if len(sys.argv) > 1:
     REPLAY_FILE_PATH = sys.argv[1]
 else:
     print("Please provide the replay file path as a command line argument.")
-    print("Example: python replay_game.py <mapname>.awap24r.gz")
+    print("Example: python replay_game.py <mapname>.awap24r")
     exit()
+
+if REPLAY_FILE_PATH.endswith('.awap24r.gz'):
+    replay = compress_json.load(REPLAY_FILE_PATH)
+elif REPLAY_FILE_PATH.endswith('.awap24r'):
+    with open(REPLAY_FILE_PATH, 'r') as file:
+        replay = json.load(file)
+else:
+    print("Please provide a valid replay file.")
 
 replay = compress_json.load(REPLAY_FILE_PATH)
 

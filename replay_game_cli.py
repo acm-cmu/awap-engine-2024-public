@@ -1,4 +1,5 @@
 import json
+import compress_json
 from colorama import Fore, Back, Style, init
 import time
 
@@ -14,8 +15,13 @@ else:
     exit()
 
 def load_replay(file_path):
-    with open(file_path, 'r') as file:
-        replay_data = json.load(file)
+    if file_path.endswith('.awap24r.gz'):
+        replay_data = compress_json.load(REPLAY_FILE_PATH)
+    elif file_path.endswith('.awap24r'):
+        with open(file_path, 'r') as file:
+            replay_data = json.load(file)
+    else:
+        print("Please provide a valid replay file.")
     return replay_data
 
 def visualize_turn(turn, metadata):
