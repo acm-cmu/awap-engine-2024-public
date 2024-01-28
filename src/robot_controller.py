@@ -26,7 +26,7 @@ class RobotController:
         return copy.deepcopy(self.__gs.map)
     
     def get_towers(self, team: Team) -> List[Tower]:
-        return copy.deepcopy(list(self.__gs.towers[team]).values())
+        return copy.deepcopy(list(self.__gs.towers[team].values()))
     
     def get_debris(self, team: Team) -> List[Debris]:
         return copy.deepcopy(list(self.__gs.debris[team].values()))
